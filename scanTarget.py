@@ -52,6 +52,10 @@ def main():  # code from class
 
     portScan(tgtHost, tgtPorts)
 
+#     _
+#   >(.)___
+#    (____/
+
 
 if __name__ == "__main__":
     main()
