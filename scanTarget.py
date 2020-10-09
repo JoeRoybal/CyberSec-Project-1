@@ -9,18 +9,15 @@ def connScan(tgtHost, tgtPort):
     #  connScan will be the function run as a thread and args will be the arguments used by
     #  the function
     try:
-        socket = socket.socket(
-            socket.AF_INET, socket.SOCK_STREAM)  # create socket
-        # socket.settimeout(10)
-        socket.connect((tgtHost, tgtPort))  # connect
-        # socket.send('root\r\n')
-        # data = socket.recv(4096)
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # create socket
+        s.settimeout(0.5)
+        s.connect((tgtHost, tgtPort))  # connect
         semLock.acquire()
         print(tgtPort, " /tcp port open")  # print that that port is open
-        socket.close()  # close the connection
+        s.close()  # close the connection
     except:
         semLock.acquire()
-        print(tgtPort,  " is filtered or closed")
+        print(tgtPort,  "is filtered or closed")
     finally:
         semLock.release()
 
@@ -34,8 +31,7 @@ def portScan(tgtHost, tgtPorts):  # Code from class
         return
 
     for tgtPort in tgtPorts:  # Outlined in Project guidelines
-        port = int(tgtPort)
-        t = Thread(target=connScan, args=(tgtHost, tgtPort))
+        t = Thread(target=connScan, args=(tgtHost, int(tgtPort)))
         t.start()
 
 
