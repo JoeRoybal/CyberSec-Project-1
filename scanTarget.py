@@ -11,10 +11,10 @@ def connScan(tgtHost, tgtPort):
     try:
         socket = socket.socket(
             socket.AF_INET, socket.SOCK_STREAM)  # create socket
-        # s.settimeout(10)
+        # socket.settimeout(10)
         socket.connect((tgtHost, tgtPort))  # connect
-        # s.send('root\r\n')
-        # data = s.recv(4096)
+        # socket.send('root\r\n')
+        # data = socket.recv(4096)
         semLock.acquire()
         print(tgtPort, " /tcp port open")  # print that that port is open
         socket.close()  # close the connection
