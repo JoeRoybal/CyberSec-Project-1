@@ -3,11 +3,11 @@ import socket
 from threading import *
 # From project outlines
 semLock = Semaphore(value=1)
-#  connScan will be the function run as a thread and args will be the arguments used by
-#  the function
 
 
 def connScan(tgtHost, tgtPort):
+    #  connScan will be the function run as a thread and args will be the arguments used by
+    #  the function
     try:
         socket = socket.socket(
             socket.AF_INET, socket.SOCK_STREAM)  # create socket
@@ -25,7 +25,7 @@ def connScan(tgtHost, tgtPort):
         semLock.release()
 
 
-def portScan(tgtHost, tgtPorts):
+def portScan(tgtHost, tgtPorts):  # Code from class
     try:
         tgtIP = socket.gethostbyname(tgtHost)
         print(tgtIP)
@@ -52,9 +52,10 @@ def main():  # code from class
 
     portScan(tgtHost, tgtPorts)
 
-#     _
-#   >(.)___
-#    (____/
+
+#   Cyber  _  Ducky
+#        >(.)__
+#         (___/
 
 
 if __name__ == "__main__":
