@@ -40,7 +40,7 @@ def main():  # code from class
     parser.add_argument('-H', dest='tgtHost', required=True,
                         help='specify target host')
     parser.add_argument('-p', dest='tgtPorts',
-                        default='21, 23, 25, 80, 443', help='specify target port(s)')
+                        default='21, 22, 23, 25, 80, 443', help='specify target port(s)')
 
     args = parser.parse_args()
     tgtHost = args.tgtHost
